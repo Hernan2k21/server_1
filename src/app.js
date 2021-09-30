@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 const  config = require('./config')
 const mercadopago = require("mercadopago");
 var indexRouter = require('./routes/index');
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan('combined'))
-
+app.use(cors())
 app.use('/', indexRouter);
 app.use('/mercadopago', mercadopagoRouter);
 
